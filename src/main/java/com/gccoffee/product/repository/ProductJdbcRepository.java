@@ -105,6 +105,12 @@ public class ProductJdbcRepository implements ProductRepository {
 		jdbcTemplate.update("DELETE FROM products", Collections.emptyMap());
 	}
 
+	@Override
+	public void deleteById(UUID productId) {
+		jdbcTemplate.update("DELETE FROM products WHERE product_id = UUID_TO_BIN(:productId)",
+			Collections.singletonMap("productId", productId.toString().getBytes()));
+	}
+
 	private Map<String, Object> toParamMap(Product product) {
 		var paramMap = new HashMap<String, Object>();
 		paramMap.put("productId", product.getProductId().toString().getBytes());
