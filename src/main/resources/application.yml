@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/gc_management
+    username: devcourse
+    password: devcourse
